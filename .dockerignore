@@ -1,0 +1,9 @@
+node_modules
+logs
+screenshots
+allure-results
+allure-report
+.git
+.github
+.env
+*.log

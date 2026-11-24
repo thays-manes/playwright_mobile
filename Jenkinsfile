@@ -1,4 +1,5 @@
-// Exemplo base de pipeline. Ajustar agent/labels conforme o ambiente (emulador ou device farm).
+// Exemplo base de pipeline. Ajustar agent/labels conforme o ambiente.
+// O agent precisa de Node, Java, Android SDK e um emulador/device (ou use o Dockerfile + device farm).
 pipeline {
   agent any
 
@@ -14,7 +15,8 @@ pipeline {
   stages {
     stage('Instalar dependências') {
       steps {
-        sh 'npm ci'
+        // Troque por 'npm ci' depois de commitar o package-lock.json
+        sh 'npm install'
         sh 'npm run appium:drivers'
       }
     }

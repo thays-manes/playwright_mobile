@@ -44,6 +44,18 @@ npm run test:ios
 
 Variáveis opcionais: `APP_PATH`, `DEVICE_NAME`, `PLATFORM_VERSION`.
 
+## Pipeline
+
+- **GitHub Actions** (`.github/workflows/mobile-tests.yml`): sobe um emulador Android (API 34), roda os testes, gera o Allure e publica como artefato. Dispara em push, PR, todo dia às 2h e manualmente.
+  - Configure em *Settings > Secrets and variables > Actions*: secrets `USER_EMAIL` e `USER_PASSWORD`, e a variável `APP_URL` (link do `.apk`).
+- **Jenkins** (`Jenkinsfile`): parâmetro de plataforma, disparo agendado, credenciais via Credentials e relatório Allure.
+- **Docker** (`Dockerfile`): imagem com Node, Java, Android SDK e Appium (driver UiAutomator2). O emulador não vai na imagem porque precisa de KVM; use o runner com emulador, um device conectado ou um device farm.
+
+```bash
+docker build -t mobile-tests .
+docker run --rm -e USER_EMAIL=... -e USER_PASSWORD=... -e APP_PATH=/app/apps/android/app.apk mobile-tests
+```
+
 ## Relatório (Allure)
 
 Depois de rodar os testes, gere e abra o relatório HTML:
