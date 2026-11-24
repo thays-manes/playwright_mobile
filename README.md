@@ -14,11 +14,13 @@ test/
     credentials.js        # lê USER_EMAIL e USER_PASSWORD do ambiente
     waits.js              # waits explícitos (visível, clicável, texto)
     gestures.js           # swipe, scroll, tap com W3C Actions
+  shared/
+    pages/                # Page Object base (elementos com accessibility id, iguais nas duas plataformas)
   android/
-    pages/                # Page Objects Android
+    pages/                # Page Objects Android (herdam do shared, só o que é específico)
     specs/                # testes Android
   ios/
-    pages/                # Page Objects iOS
+    pages/                # Page Objects iOS (herdam do shared, só o que é específico)
     specs/                # testes iOS
 apps/                     # coloque aqui o .apk e o .app/.zip
 Jenkinsfile               # exemplo de pipeline
@@ -79,7 +81,7 @@ O `.env` está no `.gitignore`. No Jenkins, use o Credentials (`withCredentials`
 ## Decisões de projeto
 
 - **Waits explícitos**: nada de `sleep` fixo nem implicit wait. Os helpers em `waits.js` esperam uma condição real (visível, clicável, texto) e geram mensagem clara quando estouram o tempo.
-- **Page Object por plataforma**: Android e iOS têm seletores diferentes (UiSelector vs. iOS predicate), então ficam separados e os specs ficam legíveis.
+- **Accessibility ID compartilhado**: elementos com `~id` funcionam nas duas plataformas (content-desc no Android, accessibility identifier no iOS), então ficam num Page Object base em `test/shared`. Só o que é específico (UiSelector no Android, iOS predicate no iOS) fica em cada plataforma, que herda do base.
 - **Gestos W3C**: swipe e scroll funcionam nas duas plataformas.
 - **Credenciais fora do código**: leitura via variáveis de ambiente (`.env` local, Credentials no Jenkins).
 - **Print em falha**: o hook `afterTest` salva a imagem em `screenshots/` para facilitar a investigação de testes instáveis.
