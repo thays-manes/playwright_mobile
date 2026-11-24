@@ -9,7 +9,14 @@
     "test:android": "wdio run ./config/wdio.android.conf.js",
     "test:ios": "wdio run ./config/wdio.ios.conf.js"
   },
-  "keywords": ["webdriverio", "appium", "mobile", "android", "ios", "qa"],
+  "keywords": [
+    "webdriverio",
+    "appium",
+    "mobile",
+    "android",
+    "ios",
+    "qa"
+  ],
   "author": "Thays Manes",
   "license": "ISC",
   "devDependencies": {
@@ -20,6 +27,7 @@
     "@wdio/mocha-framework": "^9.0.0",
     "@wdio/spec-reporter": "^9.0.0",
     "appium": "^2.0.0",
+    "dotenv": "^16.0.0",
     "webdriverio": "^9.0.0"
   }
 }

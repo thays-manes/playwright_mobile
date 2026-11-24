@@ -21,7 +21,12 @@ pipeline {
 
     stage('Rodar testes') {
       steps {
-        sh 'npm run test:${PLATFORM}'
+        // As credenciais ficam no Jenkins (Credentials), nunca no repositório
+        withCredentials([usernamePassword(credentialsId: 'mobile-test-user',
+                                          usernameVariable: 'USER_EMAIL',
+                                          passwordVariable: 'USER_PASSWORD')]) {
+          sh 'npm run test:${PLATFORM}'
+        }
       }
     }
   }

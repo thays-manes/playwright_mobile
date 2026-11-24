@@ -11,6 +11,7 @@ config/
   wdio.ios.conf.js        # capabilities iOS (XCUITest)
 test/
   helpers/
+    credentials.js        # lê USER_EMAIL e USER_PASSWORD do ambiente
     waits.js              # waits explícitos (visível, clicável, texto)
     gestures.js           # swipe, scroll, tap com W3C Actions
   android/
@@ -43,11 +44,22 @@ npm run test:ios
 
 Variáveis opcionais: `APP_PATH`, `DEVICE_NAME`, `PLATFORM_VERSION`.
 
+## Credenciais
+
+As credenciais não ficam no código. Copie o exemplo e preencha:
+
+```bash
+cp .env.example .env
+```
+
+O `.env` está no `.gitignore`. No Jenkins, use o Credentials (`withCredentials`) para injetar `USER_EMAIL` e `USER_PASSWORD`.
+
 ## Decisões de projeto
 
 - **Waits explícitos**: nada de `sleep` fixo nem implicit wait. Os helpers em `waits.js` esperam uma condição real (visível, clicável, texto) e geram mensagem clara quando estouram o tempo.
 - **Page Object por plataforma**: Android e iOS têm seletores diferentes (UiSelector vs. iOS predicate), então ficam separados e os specs ficam legíveis.
 - **Gestos W3C**: swipe e scroll funcionam nas duas plataformas.
+- **Credenciais fora do código**: leitura via variáveis de ambiente (`.env` local, Credentials no Jenkins).
 - **Print em falha**: o hook `afterTest` salva a imagem em `screenshots/` para facilitar a investigação de testes instáveis.
 - **Pipeline**: `Jenkinsfile` de exemplo com disparo agendado e parâmetro de plataforma.
 

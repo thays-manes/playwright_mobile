@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 // Configuração compartilhada entre Android e iOS.
 // O que muda por plataforma (capabilities e specs) fica em wdio.android.conf.js e wdio.ios.conf.js.
 
