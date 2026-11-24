@@ -85,6 +85,7 @@ O `.env` está no `.gitignore`. No Jenkins, use o Credentials (`withCredentials`
 - **Accessibility ID compartilhado**: elementos com `~id` funcionam nas duas plataformas (content-desc no Android, accessibility identifier no iOS), então ficam num Page Object base em `test/shared`. Só o que é específico (UiSelector no Android, iOS predicate no iOS) fica em cada plataforma, que herda do base.
 - **Gestos W3C**: swipe e scroll funcionam nas duas plataformas.
 - **Credenciais fora do código**: leitura via variáveis de ambiente (`.env` local, Credentials no Jenkins).
+- **Cenário "Meus pedidos"** (ilustrativo, com `.skip`): o login usa os elementos compartilhados e a tela de pedidos usa elementos diferentes em cada plataforma (resource-id no Android, class chain no iOS). O fluxo fica no `HomePage` base e só os seletores mudam.
 - **Print em falha**: o hook `afterTest` salva a imagem em `screenshots/` para facilitar a investigação de testes instáveis.
 - **Pipeline**: `Jenkinsfile` de exemplo com disparo agendado e parâmetro de plataforma.
 
