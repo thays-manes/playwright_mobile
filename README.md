@@ -15,8 +15,7 @@ test/
     waits.js              # waits explícitos (visível, clicável, texto)
     gestures.js           # swipe, scroll, tap com W3C Actions
   shared/
-    pages/                # Page Object base (elementos com accessibility id, iguais nas duas plataformas)
-    specs/                # testes que rodam nas duas plataformas, sem mudar nada
+    pages/                # só elementos: Page Objects base (login com accessibility id, home com métodos do fluxo)
   android/
     pages/                # Page Objects Android (herdam do shared, só o que é específico)
     specs/                # testes Android
