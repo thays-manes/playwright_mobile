@@ -16,6 +16,7 @@ test/
     gestures.js           # swipe, scroll, tap com W3C Actions
   shared/
     pages/                # Page Object base (elementos com accessibility id, iguais nas duas plataformas)
+    specs/                # testes que rodam nas duas plataformas, sem mudar nada
   android/
     pages/                # Page Objects Android (herdam do shared, só o que é específico)
     specs/                # testes Android

@@ -9,7 +9,8 @@ const appPath =
 export const config = {
   ...shared,
 
-  specs: ['../test/android/specs/**/*.spec.js'],
+  // specs compartilhados (rodam nas duas plataformas) + específicos do Android
+  specs: ['../test/shared/specs/**/*.spec.js', '../test/android/specs/**/*.spec.js'],
 
   capabilities: [
     {

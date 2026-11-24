@@ -9,7 +9,8 @@ const appPath =
 export const config = {
   ...shared,
 
-  specs: ['../test/ios/specs/**/*.spec.js'],
+  // specs compartilhados (rodam nas duas plataformas) + específicos do iOS
+  specs: ['../test/shared/specs/**/*.spec.js', '../test/ios/specs/**/*.spec.js'],
 
   capabilities: [
     {

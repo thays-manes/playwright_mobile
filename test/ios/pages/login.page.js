@@ -6,6 +6,7 @@ import LoginPage from '../../shared/pages/login.page.js';
 // Se usar outro app, ajuste os seletores aqui.
 class LoginPageIOS extends LoginPage {
   get mensagemErroEmail() { return $('-ios predicate string:label CONTAINS "valid email"'); }
+  get mensagemErroSenha() { return $('-ios predicate string:label CONTAINS "8 characters"'); }
   get alertaTitulo() { return $('-ios predicate string:label == "Success"'); }
   get alertaOk() { return $('-ios predicate string:label == "OK"'); }
 }

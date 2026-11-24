@@ -18,6 +18,7 @@ export default class LoginPage {
 
   // Específicos da plataforma: cada subclasse implementa
   get mensagemErroEmail() { throw new Error('Implementar na subclasse da plataforma'); }
+  get mensagemErroSenha() { throw new Error('Implementar na subclasse da plataforma'); }
   get alertaTitulo() { throw new Error('Implementar na subclasse da plataforma'); }
   get alertaOk() { throw new Error('Implementar na subclasse da plataforma'); }
 
