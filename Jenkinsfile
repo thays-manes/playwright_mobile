@@ -33,7 +33,9 @@ pipeline {
 
   post {
     always {
-      archiveArtifacts artifacts: 'screenshots/**, logs/**', allowEmptyArchive: true
+      // Requer o plugin Allure do Jenkins. Sem o plugin, o archiveArtifacts abaixo guarda os arquivos.
+      allure includeProperties: false, results: [[path: 'allure-results']]
+      archiveArtifacts artifacts: 'screenshots/**, logs/**, allure-results/**', allowEmptyArchive: true
     }
   }
 }

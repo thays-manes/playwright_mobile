@@ -44,6 +44,16 @@ npm run test:ios
 
 Variáveis opcionais: `APP_PATH`, `DEVICE_NAME`, `PLATFORM_VERSION`.
 
+## Relatório (Allure)
+
+Depois de rodar os testes, gere e abra o relatório HTML:
+
+```bash
+npm run report
+```
+
+Ele mostra os testes por feature e severidade, com print anexado nas falhas. Os resultados brutos ficam em `allure-results/` (ignorado pelo git).
+
 ## Credenciais
 
 As credenciais não ficam no código. Copie o exemplo e preencha:
@@ -65,6 +75,5 @@ O `.env` está no `.gitignore`. No Jenkins, use o Credentials (`withCredentials`
 
 ## Próximos passos
 
-- Relatório com Allure
 - Execução em device farm (BrowserStack/Sauce Labs)
 - Mais fluxos (cadastro, navegação, formulários)

@@ -38,7 +38,18 @@ export const config = {
     timeout: 90000,
   },
 
-  reporters: ['spec'],
+  // spec no terminal + Allure para o relatório HTML (npm run report)
+  reporters: [
+    'spec',
+    [
+      'allure',
+      {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false,
+      },
+    ],
+  ],
 
   // Print automático quando o teste falha (ajuda a investigar flaky)
   afterTest: async function (test, context, { passed }) {
