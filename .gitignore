@@ -1,0 +1,11 @@
+node_modules/
+logs/
+screenshots/
+allure-results/
+*.log
+.DS_Store
+
+# Binários dos apps (baixe conforme o README)
+apps/android/*.apk
+apps/ios/*.zip
+apps/ios/*.app
